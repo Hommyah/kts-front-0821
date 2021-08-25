@@ -1,7 +1,6 @@
-import React, {ChangeEvent} from "react";
+import * as React from 'react';
 import 'styles/main.css'
-import LibStore from "store/LibStore";
-import {BookType} from "store/LibStore/types";
+import LibStore, {BookType}  from "store/LibStore";
 
 const Main = () => {
 
@@ -9,7 +8,7 @@ const Main = () => {
     const [books, setBooks] = React.useState<Array<BookType>>([])
     const [imgTest, setImgTest] = React.useState<Array<string>>([]);
 
-    const handleQuery = React.useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const handleQuery = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         setQuery(val);
     }, [])
@@ -27,7 +26,7 @@ const Main = () => {
     return (
         <div className='page'>
             <div className='head'>Электронная библиотека</div>
-            <div className='sear'>
+            <div className='seek'>
                 <input className='search' placeholder='Введите название книги или имя автора' value={query}
                        onChange={handleQuery}/>
                 <button className='btn' onClick={handleClick}>Поиск</button>
@@ -35,8 +34,8 @@ const Main = () => {
             <div>
                 <div className='popularBook'>Популярные книги:</div>
                 <div className='popularBook__list'>
-                    {books.map((b, i)=>{
-                        return <div key={i}><div>{b.title}</div><img src={imgTest[i]} alt={"oops"}/></div>})}
+                    {books.map((book, idx)=>{
+                        return <div key={idx}><div>{book.title}</div><img src={imgTest[idx]} alt={"oops"}/></div>})}
                 </div>
             </div>
             <div>
