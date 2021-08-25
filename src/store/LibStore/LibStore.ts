@@ -1,12 +1,12 @@
 import {ILibStore, BookType} from "./types";
-import ApiStore from "../../shared/store/ApiStore";
-import {HTTPMethod, RequestParams} from "../../shared/store/ApiStore/types";
+import ApiStore from "shared/store/ApiStore";
+import {HTTPMethod, RequestParams} from "shared/store/ApiStore/types";
 
 export default class LibStore implements ILibStore {
-    private store = new ApiStore()
+    private readonly  store = new ApiStore()
 
     async searchByQuery(querySearch: string, limit: number, offset: number): Promise<Array<BookType>> {
-        let books: Array<BookType> = []
+        //let books: Array<BookType> = []
 
         const params: RequestParams<any> = {
             method: HTTPMethod.GET,
@@ -20,16 +20,15 @@ export default class LibStore implements ILibStore {
             }
         }
         const resp = await this.store.request(params)
-        console.log(resp)
         let data = resp.data.docs.slice(0, 5);
-        books = data.map((obj: { key: string, title: string, author_name: Array<string>, cover_i: string }) => ({
+        return data.map((obj: { key: string, title: string, author_name: Array<string>, cover_i: string }) => ({
             author: obj.author_name,
             title: obj.title,
             coverId: obj.cover_i,
             coverUrl: ""
         }))
 
-        return books
+        //return books
     }
 }
 

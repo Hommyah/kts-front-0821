@@ -7,9 +7,9 @@ export default class ApiStore implements IApiStore {
     readonly baseUrl: string = "https://openlibrary.org";
 
     async request<SuccessT, ErrorT = any, ReqT = {}>(params: RequestParams<ReqT>): Promise<ApiResponse<SuccessT, ErrorT>> {
-        let q = qs.stringify(params.data)
-        q = q !== "" ? '?' + q : q
-        const url = `${this.baseUrl}${params.endpoint}${q}`
+        let query = qs.stringify(params.data)
+        query = query !== "" ? '?' + query : query
+        const url = `${this.baseUrl}${params.endpoint}${query}`
         try {
             const resp = await fetch(url, {method: params.method, headers: params.headers})
             return {

@@ -27,6 +27,7 @@
       "pages/*": ["src/pages/*"],
       "store/*": ["src/store/*"],
       "styles/*": ["src/styles/*"],
+      "shared/store/*": ["src/shared/store/*"]
     }
   },
   "include": [

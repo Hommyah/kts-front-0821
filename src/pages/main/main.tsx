@@ -15,10 +15,9 @@ const Main = () => {
     }, [])
 
     const handleClick = React.useCallback(() => {
-        const q = "Harry Potter"
+        const query = "Harry Potter"
         const test = new LibStore()
-        test.searchByQuery(q, 10, 0).then(books => {
-            console.log(books);
+        test.searchByQuery(query, 10, 0).then(books => {
             setBooks(books)
             setImgTest(books.map((b)=>(`https://covers.openlibrary.org/b/id/${b.coverId}-M.jpg`)));
         })
