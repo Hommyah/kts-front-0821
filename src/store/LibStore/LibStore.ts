@@ -43,7 +43,7 @@ export default class LibStore implements ILibStore {
   async getBookCoverImg(coverId: string): Promise<any> {
     const params: RequestParams<any> = {
       method: HTTPMethod.GET,
-      headers: { Origin: "" },
+      headers: {},
       endpoint: `/b/id/${coverId}-M.jpg`,
       data: {
         domains: "covers",
