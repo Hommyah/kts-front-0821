@@ -4,27 +4,21 @@ import "./input.css";
 
 type InputProps = {
   placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyChange?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 const Input: React.FC<InputProps> = (props) => {
-  const [query, setQuery] = React.useState<string>("");
-
-  const handleQuery = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const val = e.target.value;
-      setQuery(val);
-    },
-    []
-  );
-
   return (
     <input
       placeholder={props.placeholder}
-      value={query}
-      onChange={handleQuery}
+      value={props.value}
+      onChange={props.onChange}
+      onKeyPress={props.onKeyChange}
       className="search"
     />
   );
 };
 
-export default Input;
+export default React.memo(Input);

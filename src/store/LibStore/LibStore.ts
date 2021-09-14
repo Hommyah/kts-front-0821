@@ -40,7 +40,9 @@ export default class LibStore implements ILibStore {
     );
   }
 
-  async getBookCoverImg(coverId: string): Promise<any> {
+  async getBookCoverImg(
+    coverId: string
+  ): Promise<{ data: Blob; success: boolean; status: number }> {
     const params: RequestParams<any> = {
       method: HTTPMethod.GET,
       headers: {},

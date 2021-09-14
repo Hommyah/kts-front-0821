@@ -7,7 +7,8 @@
       "@styles/*": ["src/styles/*"],
       "@shared/*": ["src/shared/store/*"],
       "@store/*": ["src/store/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@media/*": ["src/styles/media/*"],
     }
   }
 }
