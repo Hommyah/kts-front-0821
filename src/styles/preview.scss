@@ -1,0 +1,11 @@
+div.book-preview{
+    margin: 0 0 1rem 1rem;
+    &_title{
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 2.5rem;
+        width: 250px;
+        word-break: break-word;
+    }
+}

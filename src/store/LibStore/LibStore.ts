@@ -2,7 +2,7 @@ import { HTTPMethod, RequestParams } from "@shared/ApiStore/types";
 import { BookListLimit, BookListOffset } from "@utils/constants";
 
 import ApiStore from "../../shared/store/ApiStore";
-import { BookType, ILibStore } from "./types";
+import { BookFull, BookType, ILibStore } from "./types";
 
 export default class LibStore implements ILibStore {
   private readonly store = new ApiStore();
@@ -18,7 +18,7 @@ export default class LibStore implements ILibStore {
       endpoint: "/search.json",
       data: {
         q: querySearch,
-        fields: "title, author_name, cover_i",
+        fields: "title, author_name, cover_i, key",
         limit: BookListLimit,
         offset: BookListOffset,
       },
@@ -35,9 +35,22 @@ export default class LibStore implements ILibStore {
         author: obj.author_name,
         title: obj.title,
         coverId: obj.cover_i,
-        coverUrl: "",
+        key: obj.key ? obj.key.split("/")[2] : "",
       })
     );
+  }
+
+  async getBookByKey(
+    key: string
+  ): Promise<{ data: any; success: boolean; status: number }> {
+    const params: RequestParams<any> = {
+      method: HTTPMethod.GET,
+      headers: {},
+      endpoint: `${key}.json`,
+      data: {},
+    };
+
+    return await this.store.request(params);
   }
 
   async getBookCoverImg(

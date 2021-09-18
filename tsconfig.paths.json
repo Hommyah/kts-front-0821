@@ -8,7 +8,7 @@
       "@shared/*": ["src/shared/store/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["src/utils/*"],
-      "@media/*": ["src/styles/media/*"],
+      "@media/*": ["src/styles/media/*"]
     }
   }
 }

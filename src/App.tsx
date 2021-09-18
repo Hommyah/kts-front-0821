@@ -1,15 +1,23 @@
 import React from "react";
 
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import "@styles/fontawesome-free-5.15.3-web/css/all.css";
-import "@styles/main.css";
+import "@styles/main.scss";
 import "@styles/App.css";
-import Book from "./pages/main";
+import BookInfo from "./pages/bookInfo";
+import Main from "./pages/main";
 
 function App() {
   return (
-    <div className="App">
-      <Book />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/works/:ol" component={BookInfo} />
+          <Route path="*" component={Main} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

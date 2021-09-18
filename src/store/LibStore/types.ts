@@ -16,6 +16,18 @@ export type BookType = {
   title: string; // title
   coverId: string; // cover_i
   coverUrl: string;
-  ol: string;
+  key: string;
   ISBN: string;
+};
+
+export type BookFull = {
+  authors: Array<string>;
+  title: string;
+  description: string;
+  links: Array<{
+    url: string;
+    title: string;
+  }>;
+  covers: Array<string>;
+  created: { value: string };
 };
