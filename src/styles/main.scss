@@ -1,0 +1,113 @@
+html, body, #root, div.App {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.head {
+  font-size: 2rem;
+  color: #38290e;
+  font-weight: bold;
+  font-style: italic;
+  margin: 10px;
+}
+
+.seek {
+  width: 100vw;
+  height: 5%;
+  margin: 10px;
+}
+
+.search:disabled {
+  background: #adacac;
+}
+
+.search:focus{
+  border: #eeb1b1 solid 1px;
+}
+
+.btn {
+  vertical-align: center;
+  background: #dec26e;
+  height: 27px;
+  width: 79px;
+  color: #4b3612;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.btn:disabled {
+  background: #796d54;
+}
+
+.btn:hover {
+  background: #8f813c;
+}
+
+.popularBook {
+  color: #38290e;
+  font-weight: bold;
+  font-style: italic;
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.popularBook__list {
+  display: flex;
+  overflow-y: auto;
+  margin: 1rem;
+}
+
+.book {
+  height: 90%;
+  min-width: 15%;
+  background: #4b3612;
+  margin-right: 15px;
+}
+
+.popularAuthor {
+  color: #38290e;
+  font-weight: bold;
+  font-style: italic;
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.popularAuthor__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 23vh;
+  margin: 15px;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  min-width: 10%;
+  max-width: 10%;
+  margin-right: 15px;
+}
+
+.author__img {
+  min-height: 72%;
+  min-width: 160px;
+  background: #4b3612;
+  border-radius: 50%;
+}
+
+.author__name {
+  color: #38290e;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.author__surname {
+  color: #38290e;
+  font-weight: bold;
+  font-style: italic;
+}
+
+div.load {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,5 @@
+.App {
+    background-image: url("/src/styles/media/pergament.jpg");
+    background-size: 100%;
+    overflow: hidden;
+}
