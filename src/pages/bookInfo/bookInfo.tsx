@@ -25,14 +25,15 @@ const BookInfo = (book: BookType) => {
       }
     })();
   }, [book.key]);
-
   return (
-    <div>
-      <div>{bookData.title}</div>
-      <Cover coverUrl={bookData.covers ? bookData.covers[0] : ""} />
-      <div>{bookData.description}</div>
+    <div className="prew">
+      <div className="title">{bookData.title}</div>
+      <div className="cover">
+        <Cover coverUrl={bookData.covers ? bookData.covers[0] : ""} />
+      </div>
+      <div className="description">{bookData.description}</div>
       {bookData.links?.map((l) => (
-        <a key={l.url} href={l.url}>
+        <a className="a" key={l.url} href={l.url}>
           {l.title}
         </a>
       ))}

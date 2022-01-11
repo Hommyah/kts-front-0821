@@ -80,7 +80,7 @@ const Main = () => {
           }}
         >
           {NonePrinter(
-            <div className="popularBook">Результаты поиска:</div>,
+            <div className="popularBook">Результаты не найдены</div>,
             books?.length > 0
           )}
           <div className="popularBook__list">
@@ -89,16 +89,6 @@ const Main = () => {
             })}
           </div>
         </Provider>
-      </div>
-      <div>
-        <div className="popularAuthor">Популярные авторы:</div>
-        <div className="popularAuthor__list">
-          <div className="author">
-            <div className="author__img" />
-            <div className="author__name">name</div>
-            <div className="author__surname">surname</div>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ export default class ApiStore implements type.IApiStore {
     params: type.RequestParams<ReqT>
   ): Promise<type.ApiResponse<SuccessT, ErrorT>> {
     let query = qs.stringify(params.data);
+    let author = qs.stringify(params.data);
     const url = `${this.baseUrl}${params.endpoint}?${query}`;
     try {
       const resp = await fetch(url, {
@@ -27,6 +28,24 @@ export default class ApiStore implements type.IApiStore {
         status: e.status,
         data: e.data,
       };
+      const aurl = `${this.baseUrl}${params.endpoint}${author}`;
+      try {
+        const resp = await fetch(aurl, {
+          method: params.method,
+          headers: params.headers,
+        });
+        return {
+          success: resp.status === type.StatusHTTP.OK,
+          status: resp.status,
+          data: await resp.json(),
+        };
+      } catch (e: any) {
+        return {
+          success: false,
+          status: e.status,
+          data: e.data,
+        };
+      }
     }
   }
 

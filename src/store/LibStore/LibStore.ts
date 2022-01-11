@@ -40,7 +40,47 @@ export default class LibStore implements ILibStore {
     );
   }
 
+  async searchByAuthor(
+    authorSearch: string,
+    limit: number,
+    offset: number
+  ): Promise<Array<BookType>> {
+    const params: RequestParams<any> = {
+      method: HTTPMethod.GET,
+      headers: {},
+      endpoint: "/search.json",
+      data: {
+        author: authorSearch,
+        fields: "key, seed",
+        limit: BookListLimit,
+        offset: BookListOffset,
+      },
+    };
+    const resp = await this.store.request(params);
+    const data = resp.data.docs;
+    return data.map(
+      (obj: { key: string; author_name: string; seed: Array<string> }) => ({
+        key: obj.key ? obj.key.split("/")[2] : "",
+        name: obj.author_name,
+        seed: obj.seed,
+      })
+    );
+  }
+
   async getBookByKey(
+    key: string
+  ): Promise<{ data: any; success: boolean; status: number }> {
+    const params: RequestParams<any> = {
+      method: HTTPMethod.GET,
+      headers: {},
+      endpoint: `${key}.json`,
+      data: {},
+    };
+
+    return await this.store.request(params);
+  }
+
+  async getAuthorByKey(
     key: string
   ): Promise<{ data: any; success: boolean; status: number }> {
     const params: RequestParams<any> = {

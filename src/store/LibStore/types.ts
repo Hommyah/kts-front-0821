@@ -20,6 +20,21 @@ export type BookType = {
   ISBN: string;
 };
 
+export type AuthorType = {
+  name: string;
+  key: string;
+  seed: Array<string>; // books
+};
+
+export type AuthorFull = {
+  name: string;
+  seed: Array<string>;
+  links: Array<{
+    aurl: string;
+    name: string;
+  }>;
+};
+
 export type BookFull = {
   authors: Array<string>;
   title: string;
